@@ -646,6 +646,7 @@ class LaravelLocalization
                 $value = $value->getRouteKey();
             }
             $route = str_replace(array('{'.$key.'}', '{'.$key.'?}'), $value, $route);
+            $route = preg_replace('/{'.$key.':([^}]+)}/', $value, $route);
         }
 
         // delete empty optional arguments that are not in the $attributes array
